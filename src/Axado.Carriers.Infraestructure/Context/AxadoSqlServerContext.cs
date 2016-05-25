@@ -16,7 +16,7 @@ namespace Axado.Carriers.Infraestructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           optionsBuilder.UseSqlServer(@"Data Source=axadocarriers.database.windows.net;Initial Catalog=Axado.Carriers;User Id=Bwolf;Password=Admin1412+;");
+           optionsBuilder.UseSqlServer(@"Data Source=xxxx;Initial Catalog=Axado.Carriers;User Id=xxxx;Password=xxxx;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
