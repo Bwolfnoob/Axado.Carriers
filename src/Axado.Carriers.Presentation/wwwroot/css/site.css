@@ -1,0 +1,139 @@
+﻿
+#menu-toggle.fa-bars {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    padding: 15px;
+}
+
+body {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+@media (min-width: 768px) {
+    .carousel-caption {
+        z-index: 10 !important;
+    }
+}
+/* Sidebar-menu */
+#sidebar-wrapper {
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    height: 93%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background: #EEEEEE;
+    border-right: 4px solid #01579B;
+    color:#228B22;
+
+}
+
+/* Center div middle*/
+.vertical-center {
+  min-height: 90%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 90vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+/* Main Content */
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    padding-left: 50px;
+}
+
+/* Change sidebar to display */
+
+#wrapper.menuDisplayed #sidebar-wrapper {
+    width: 250px;
+  }
+
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
+}
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+    .sidebar-nav i {
+        line-height: 2;
+    }
+
+    .sidebar-nav li {
+        text-indent: 20px;
+        line-height: 40px;
+        border-top: 1px solid;
+    }
+
+        .sidebar-nav li:last-child {
+            border-bottom: 1px solid;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            text-decoration: none;
+              color:#228B22;
+            font-size: 20px;
+            text-align: left;
+        }
+
+#menu-toggle {
+    text-decoration: none;
+    color: white;
+}
+
+#wrapper.menuDisplayed .sidebar-nav li {
+    text-indent: 50px;
+}
+
+.sidebar-nav li {
+    text-indent: 15px;
+}
+
+    .sidebar-nav li a:hover {
+        background-color: aliceblue;
+        color:#01579B;
+    }
+
+/* Submenu  */
+.sidebar-nav .sub-menu li {
+    text-decoration: none;
+    list-style: none;
+}
+
+#logo {
+    visibility: hidden;
+}
+
+#wrapper.menuDisplayed #logo {
+    visibility: visible;
+}
+
+.menu-selected {
+    background:red;
+}
+
+.menu-selected > .sub-menu{
+    display:block;
+}
+
+.sub-menu {
+    display:none;
+    background:#2c3e50;
+}

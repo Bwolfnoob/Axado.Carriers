@@ -1,0 +1,59 @@
+﻿@model Axado.Carriers.Application.ViewModels.UserViewModel
+
+<div style="padding-top:10px;padding-right:15px">
+    <div class="bottom10">
+        <div class="col-md-12">
+            <a class="btn btn-success" asp-controller="User" asp-action="Add"><i class="glyphicon glyphicon-plus"></i> Incluir</a>
+            <button class="btn btn-default" onclick="$('#dataTable').DataTable().ajax.reload(null, false);"><i class="glyphicon glyphicon-refresh"></i> Recarregar</button>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover table-responsive" id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(m => m.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(m => m.Email)
+                                    </th>   
+                                    <th style="width:200px">
+                                        Ações
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('#dataTable').DataTable({
+        serverSide: true,
+        processing: true,
+        deferRender: true,
+        responsive: true,
+        retrieve: true,
+        pagintType: "full_numbers",
+        ajax: {
+            type: "POST",
+            url: '@Url.Action("Load")'
+        },
+        language: {
+            url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+        },
+        columns: [
+             { data: 'Name' },
+              { data: 'Email' },
+             { data: 'btn', bSortable: false }]
+    });
+
+</script>

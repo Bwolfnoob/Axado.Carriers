@@ -1,0 +1,42 @@
+﻿@model IList<Axado.Carriers.Application.ViewModels.CarrierViewModel>
+
+<style>
+    .panel-heading {
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-6">
+        <div class="thumbnail panel panel-default">
+            <div class="panel-heading" style="font-size:20px">@item.Name</div>
+            <div class="caption">
+                <h4><b>Email:</b> @item.Email</h4>
+                <h4><b>Website:</b> @item.WebSite</h4>
+                <h4><b>Telefone:</b> @item.Phone</h4>
+             @*   <h4><b>Endereço:</b> @item.Address.Street @item.Address.District @item.Address.City   </h4>*@
+                <form asp-controller="rate" asp-action="Rating">
+                    <input type="hidden" name="IdCarrier" value="@item.Id" />
+                    <table>
+                        <tr>
+                            <td>
+                                <input id="input-7-xs" name="Point" class="rating rating-loading" value="@(item.Ratings.SingleOrDefault(c => c.IdUser == int.Parse(ViewBag.LoggedUserId)) == null ? 0 :item.Ratings.SingleOrDefault(c => c.IdUser == int.Parse(ViewBag.LoggedUserId)).Point )" data-min="0" data-max="5" data-step="1" data-size="xs">
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary" role="button">Classificar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+            <div class="panel-footer" style="text-align:right; font-weight:bold;font-size:20px;text-align:center">  Total Votos: @item.Ratings.Sum(c => c.Point)</div>
+        </div>
+    </div>
+}
+
+
+<script src="~/lib/bootstrap-star-rating/js/star-rating.js"></script>
+<link href="~/lib/bootstrap-star-rating/css/star-rating.css" rel="stylesheet" />
